@@ -21,7 +21,6 @@ public class WSController {
 	private SimpMessagingTemplate template;
 
 	public WSController() {
-		super();
 		startSendingDate();
 	}
 
