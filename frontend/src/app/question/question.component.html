@@ -1,0 +1,26 @@
+<ul class="questions">
+  <li *ngFor ="let q of questions" (click)="onSelect(q)">
+    <div>{{q.question}}</div>
+  </li>
+</ul>
+
+
+<div *ngIf="selectedQuestion">
+
+  <h2>Details</h2>
+  <div><span>Pytanie: </span>{{selectedQuestion.question}}</div>
+  <ul>
+    Odpowiedzi:
+    <li *ngFor="let item of selectedQuestion.answers; let i = index">
+      {{item.option}}:
+      <label>
+        <input [(ngModel)]="item.votes" (ngModelChange)="onChange([i,$event])" [value]=i placeholder="number of votes"/>
+      </label> {{item.votes}}
+    </li>
+  </ul>
+
+  <app-my-pie-chart [question]="selectedQuestion" [changeTrigger]="changeTrigger"></app-my-pie-chart>
+
+</div>
+
+
